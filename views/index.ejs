@@ -1,0 +1,55 @@
+<%- contentFor('css') %>
+    <link rel="stylesheet" type="text/css" href="components/index/index.css" />
+
+    <%- contentFor('body') %>
+
+
+        <div class="flex_colum">
+
+            <div class="item_menu">1</div>
+            <div class="item_menu">1</div>
+            <div class="item_menu">1</div>
+            <div class="item_menu">1 </div>
+
+
+
+        </div>
+        <div class="info_container">
+            <div class="item item_stacks" id="contenedor_stacks">
+
+                <!-- <div class="item_of_item_stacks">
+                    <div style="width: 100%;">
+                        VasdasdIDA : 4 
+                    </div>
+                    <div style="width: 50%;">
+                        <span class="badge badge-primary badge-pill">0</span>
+
+                    </div>
+                    <div style="width: 50%;">
+                        <span class="badge badge-success badge-pill">0</span>
+
+                    </div>
+                </div> -->
+
+            </div>
+            <div class="item">
+                gfg
+            </div>
+            <div class="item">
+                gfg
+            </div>
+            <div class="item">
+                gfg
+            </div>
+        </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+        <script src="/components/index/index.js"></script>
+
+        <script>
+            const url_api = "<%=process.env.API_PATH%>"
+            const token = "<%=token%>"
+        </script>
+
+        <script src="/components/funciones.js"></script> 

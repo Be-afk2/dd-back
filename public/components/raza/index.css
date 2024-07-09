@@ -1,0 +1,98 @@
+.info_container {
+    background-color: #824e1a;
+    width: 88% !important;
+    height: 100% !important;
+    padding: 1%;
+    border-radius: 3%;
+
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+}
+
+.paguina {
+    width: 49%;
+    background-color: white;
+    padding-left: 2%;
+    padding-right: 2%;
+    border-radius: 1%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content : space-between
+}
+
+.contenedor_padre {
+    width: 100% !important;
+    height: 100% !important;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+}
+.contenedor_padre_2 {
+    width: 100% !important;
+    height: 100% !important;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    display: none;
+
+}
+
+.row_1{
+    display: flex;
+    flex-direction: row;
+    background-color: #ffffff;
+    justify-content: space-around;
+    height: 100%;
+    
+}
+.row_2{
+    display: flex;
+    flex-direction: row;
+    background-color: #ffffff;
+    justify-content: flex-start;
+    height: 100%;
+}
+
+.img_raza{
+    position: relative;
+    width: 18vh;
+    height: auto;
+}
+
+p{
+    font-size: 2.5vh !important;
+}
+h5{
+    font-size: 7.5vh !important;
+}
+
+.item{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center
+}
+
+.textarea{
+    width: 100%;
+    height: 100%;
+    resize: none;
+}
+.input_group2{
+    height:1vh !important;
+}
+.row_3{
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+    justify-content: space-around;
+    height: 100%;
+}

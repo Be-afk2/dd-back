@@ -1,0 +1,20 @@
+DB_HOST=127.0.0.1
+DB_NAME=dd
+DB_PASSWORD=
+DB_USER=root
+DB_PORT=3306
+
+JWT_SECRET = sdf
+
+VERSION = 0.0.1
+
+API_PORT = 3005
+BACK_PORT = 3006
+WEB_PORT = 3004
+
+WEB_PATH = http://192.168.1.5:3004/
+API_PATH = http://192.168.1.5:3005/
+
+
+# WEB_PATH = http://localhost:3004/
+# API_PATH = http://localhost:3005/

@@ -1,0 +1,160 @@
+<%- contentFor('css') %>
+    <link rel="stylesheet" type="text/css" href="components/raza/index.css" />
+
+    <%- contentFor('body') %>
+        <button id="boton_crear" onclick="cambiar_vista(1)"  type="button" class="btn btn-outline-primary">Crear</button>
+        <button id="boton_guardar_creacion" hidden onclick="guardar()"   type="button" class="btn btn-outline-primary">Guardar</button>
+
+        <div class="contenedor_padre" id="contenedor_padre_1" >
+            <div class="info_container">
+                <div class="paguina">
+                    <div class="row_1">
+                        <div class="item">
+                            <h5>nombre completo</h5>
+                        </div>
+                        <div class="item">
+                            <img class="img_raza" src="/raza_images/necoarc.png" alt="foto" />
+                        </div>
+                    </div>
+                    <div class="row_2">
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                            eiusmod tempor incididunt ut labore et dolore magna aliqua. Nibh ipsum
+                            consequat nisl vel. Malesuada bibendum arcu vitae elementum curabitur.
+                            Nullam non nisi est sit. Pulvinar sapien et ligula ullamcorper
+                            malesuada proin libero nunc consequat. Adipiscing bibendum est
+                            ultricies integer quis.
+                        </p>
+                    </div>
+                    <div class="row_2">
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                            eiusmod tempor incididunt ut labore et dolore magna aliqua. Nibh ipsum
+                            consequat nisl vel. Malesuada bibendum arcu vitae elementum curabitur.
+                            Nullam non nisi est sit. Pulvinar sapien et ligula ullamcorper
+                            malesuada proin libero nunc consequat. Adipiscing bibendum est
+                            ultricies integer quis.
+                        </p>
+                    </div>
+                </div>
+                <div class="paguina">
+                    <div class="row_1">
+                        <div class="item">
+                            <h5>nombre completo</h5>
+                        </div>
+                        <div class="item">
+                            <img class="img_raza" src="/raza_images/perro.jpg" alt="foto" />
+                        </div>
+                    </div>
+                    <div class="row_2">
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                            eiusmod tempor incididunt ut labore et dolore magna aliqua. Nibh ipsum
+                            consequat nisl vel. Malesuada bibendum arcu vitae elementum curabitur.
+                            Nullam non nisi est sit. Pulvinar sapien et ligula ullamcorper
+                            malesuada proin libero nunc consequat. Adipiscing bibendum est
+                            ultricies integer quis.
+                        </p>
+                    </div>
+                    <div class="row_2">
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                            eiusmod tempor incididunt ut labore et dolore magna aliqua. Nibh ipsum
+                            consequat nisl vel. Malesuada bibendum arcu vitae elementum curabitur.
+                            Nullam non nisi est sit. Pulvinar sapien et ligula ullamcorper
+                            malesuada proin libero nunc consequat. Adipiscing bibendum est
+                            ultricies integer quis.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ////////////////////////////////////////////////////////////////////////////////////////////////// -->
+        <div class="contenedor_padre_2" id="contenedor_padre_2">
+            <div class="info_container">
+                <div class="paguina">
+                    <div class="row_1">
+                        <div class="item">
+                            <h5><input class="form-control" id="input_nombre_raza" type="text"></h5>
+                            <h5><input id="input_foto" class="form-control" onchange="cargar_foto(this)" type="file"></h5>
+                        </div>
+                        <div class="item">
+                            <img id="img_new_raza" class="img_raza" src="" alt="...." />
+                        </div>
+                    </div>
+                    <div class="row_2">
+                        <textarea class="form-control textarea" name="" id="textarea_descripcion"></textarea>
+                    </div>
+                    <div class="row_3">
+
+                        <div class="input-group input_group2">
+                            <input type="number" class="form-control"
+                                aria-label="Text input with segmented dropdown button" id="valor_stack_new">
+                            <div class="input-group-append">
+                                <button type="button" onclick="asignar_afinidad()" class="btn btn-outline-secondary">Guardar</button>
+                                <button type="button"
+                                    class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <span class="sr-only">Toggle Dropdown</span>
+                                </button>
+                                <div class="dropdown-menu" id="contenedor_opciones">
+                                    <!-- <a class="dropdown-item" href="#">Action</a>
+                                    <a class="dropdown-item" href="#">Another action</a>
+                                    <a class="dropdown-item" href="#">Something else here</a>
+                                    <div role="separator" class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="#">Separated link</a> -->
+                                </div>
+                            </div>
+                        </div>
+
+                        <p id="contenedor_afinidades">
+                            
+                        </p>
+                    </div>
+                </div>
+                <div class="paguina">
+                    <div class="row_1">
+                        <div class="item">
+                            <h5>Perro</h5>
+                        </div>
+                        <div class="item">
+                            <img class="img_raza" src="/raza_images/perro.jpg" alt="foto" />
+                        </div>
+                    </div>
+                    <div class="row_2">
+                        <p>
+                            Una descripcion lo mas detallada posible de la criatura , ejemplo :
+                            <br>
+                            <br>
+                            Canis Protectorus es un noble perro de pelaje grueso y ojos alerta,
+                            siempre listo para aventurarse en terrenos desconocidos junto a su
+                            equipo. Su presencia no solo es tranquilizadora sino también vital
+                            para la seguridad y éxito del grupo en sus misiones. A pesar de su
+                            aspecto imponente, tiene un carácter juguetón y cariñoso con aquellos
+                            a quienes considera amigos. Con este compañero a tu lado, las
+                            aventuras serán no solo más seguras sino también más alegres.
+                        </p>
+                    </div>
+                    <div class="row_2">
+                        <p>los atributos naturales que tiene este ser ejemplo : <br> <br>
+                            Fuerza: 14
+                            Agilidad: 16
+                            Inteligencia: 12
+                            Carisma: 18
+                            Percepción: 20 </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+        <script src="/components/raza/index.js"></script>
+
+        <script>
+            const url_api = '<%=process.env.API_PATH%>';
+            const token = '<%=token%>';
+        </script>
+
+        <script src="/components/funciones.js"></script>

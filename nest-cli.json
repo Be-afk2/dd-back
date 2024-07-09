@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json.schemastore.org/nest-cli",
+  "collection": "@nestjs/schematics",
+  "sourceRoot": "apps/dd-back/src",
+  "compilerOptions": {
+    "deleteOutDir": true,
+    "webpack": true,
+    "tsConfigPath": "apps/dd-back/tsconfig.app.json"
+  },
+  "monorepo": true,
+  "root": "apps/dd-back",
+  "projects": {
+    "dd-back": {
+      "type": "application",
+      "root": "apps/dd-back",
+      "entryFile": "main",
+      "sourceRoot": "apps/dd-back/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/dd-back/tsconfig.app.json"
+      }
+    },
+    "dd-api": {
+      "type": "application",
+      "root": "apps/dd-api",
+      "entryFile": "main",
+      "sourceRoot": "apps/dd-api/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/dd-api/tsconfig.app.json"
+      }
+    },
+    "dd-web": {
+      "type": "application",
+      "root": "apps/dd-web",
+      "entryFile": "main",
+      "sourceRoot": "apps/dd-web/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/dd-web/tsconfig.app.json"
+      }
+    }
+  }
+}
