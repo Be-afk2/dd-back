@@ -9,6 +9,8 @@ import { Raza } from 'apps/dd-back/src/entitys/raza.entity';
 import { Stack } from 'apps/dd-back/src/entitys/stacks.entity';
 import { Repository } from 'typeorm';
 import { CreateRazaDto } from './dto/RegisterRaza.dto';
+import { FotoRaza } from 'apps/dd-back/src/entitys/fotoraza.entity';
+import { throws } from 'assert';
 
 @Injectable()
 export class RazaService {
@@ -19,6 +21,9 @@ export class RazaService {
 
         @InjectRepository(Stack)
         private StackRepository: Repository<Stack>,
+
+        @InjectRepository(FotoRaza)
+        private FotoRazaRepository: Repository<FotoRaza>,
 
         @InjectRepository(Afinidad)
         private AfinidadRepository: Repository<Afinidad>,
@@ -61,6 +66,8 @@ export class RazaService {
 
     async guardar_afinidad(data:CreateRazaDto,id_raz:number){
 
+        console.log(data)
+
         for(let item of data.afinidad){
 
             try{
@@ -85,6 +92,8 @@ export class RazaService {
 
     async crear(data: CreateRazaDto) {
 
+
+
         const raza = await this.RazaRepository.save({
             nombre: data.nombre,
             descripcion: data.descripcion,
@@ -93,8 +102,17 @@ export class RazaService {
         })
 
         await this.guardar_afinidad(data,raza.id)
+        return raza.id
+    }
+
+    async dar_foto(id_raza ,ubicacion_foto){
 
 
+        const foto = await this.FotoRazaRepository.save({
+            path:ubicacion_foto,
+            id_raza:id_raza
+        })
+        
     }
 
 }

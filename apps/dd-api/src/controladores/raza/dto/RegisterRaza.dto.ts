@@ -17,7 +17,7 @@ export class CreateRazaDto {
 	nombre: string;
 
     @IsString()
-	@MaxLength(300)
+	@MaxLength(1000)
 	descripcion: string;
 
     @IsArray()

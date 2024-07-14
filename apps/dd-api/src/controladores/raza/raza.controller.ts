@@ -2,7 +2,7 @@
 https://docs.nestjs.com/controllers#controllers
 */
 
-import { Body, Controller, Get, Post, UploadedFiles, UseInterceptors } from '@nestjs/common';
+import { Body, Controller, Get, Post, UploadedFile, UploadedFiles, UseInterceptors } from '@nestjs/common';
 import { RazaService } from './raza.service';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { CreateRazaDto } from './dto/RegisterRaza.dto';
@@ -21,13 +21,21 @@ export class RazaController {
     }
 
 
-    @Post("")
+    @Post("foto")
     @UseInterceptors(FileInterceptor('image'))
-    async crear_raza(@Body() data :CreateRazaDto ,@UploadedFiles() file){
+    async dar_foto(@Body() Body,@UploadedFile() file){
+
+        console.log("hola---------")
+        console.log("file",file)
+        console.log("id_raza",Body.id_raza)
+        return await this.RazaService.dar_foto(Body.id_raza,file.path)
+    }
+
+    @Post()
+    async crear_raza(@Body() data :CreateRazaDto){
 
         console.log("hola---------")
         return await this.RazaService.crear(data)
     }
-
 
 }

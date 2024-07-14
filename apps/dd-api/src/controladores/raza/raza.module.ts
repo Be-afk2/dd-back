@@ -15,6 +15,7 @@ const multer = require('multer');
 import { MulterModule } from '@nestjs/platform-express';
 
 import { extname } from 'path';
+import { FotoRaza } from 'apps/dd-back/src/entitys/fotoraza.entity';
 
 
 @Module({
@@ -24,7 +25,8 @@ import { extname } from 'path';
             Raza,
             Stack,
             Afinidad,
-            StackPersonaje
+            StackPersonaje,
+            FotoRaza
         ]),
         MulterModule.register({
             storage: multer.diskStorage({

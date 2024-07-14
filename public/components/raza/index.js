@@ -1,7 +1,7 @@
 var afinidades_new = []
 var afinidades_selecionada = []
 $(document).ready(async function () {
-    cargar_stacks(await peticiom_api_normal_get("stack"))
+    cargar_stacks(await Get("stack"))
 })
 
 function cambiar_vista(vista) {
@@ -39,10 +39,15 @@ function cargar_a_la_lista(nombre, valor) {
 function asignar_afinidad() {
     const valor_stack_new = document.getElementById("valor_stack_new")
     if (afinidades_selecionada.length === 0) { return }
-    const element = afinidades_new.find((item) => item.id === afinidades_selecionada.id)
+
+    const element = afinidades_new.find((item) => item.stack_id === afinidades_selecionada.id)
+
     if (element) {
+
+        return 
     }
     else {
+
         afinidades_new.push({
             stack_id: afinidades_selecionada.id,
             nombre: afinidades_selecionada.stack,
@@ -91,46 +96,42 @@ function cargar_foto(input) {
 
 }
 
+function limpiar_guardar(){
 
-function guardar() {
+}
 
-    function appendFormData(formData, data) {
-        for (const key in data) {
-            if (data.hasOwnProperty(key)) {
-                // Serializar arrays y objetos a JSON
-                if (Array.isArray(data[key]) || typeof data[key] === 'object') {
-                    formData.append(key, JSON.stringify(data[key]));
-                } else {
-                    formData.append(key, data[key]);
-                }
-            }
-        }
-    }
-
+async function guardar(){
     const nombre = document.getElementById("input_nombre_raza").value
-
     const descripcion = document.getElementById("textarea_descripcion").value
-
-    var inputArchivo = document.getElementById("input_foto");
-
-
-    var formData = new FormData();
-    formData.append('image', inputArchivo.files[0]);
-    // formData.append('id_usuario', localStorage.getItem("user_id_of_reclutamiento"));
-    // formData.append('tipo_doc', select_tipo.options[select_tipo.selectedIndex].value);
-    // formData.append('sub_tipo_doc', select_sub_tipo.options[select_sub_tipo.selectedIndex].value);
-
     const data = {
         nombre: nombre,
         descripcion: descripcion,
         afinidad: afinidades_new
     }
 
-    console.log(JSON.stringify(data))
+    console.log("data", data)
+    const new_raza =  await Post("raza",data)
 
-    appendFormData(formData, data);
+    console.log("new_raza",new_raza)
 
+    const photoInput = document.getElementById('input_foto');
+    const formData = new FormData();
+    console.log("photoInput.files[0]",photoInput.files[0])
+    formData.append('image', photoInput.files[0]);
+    formData.append('id_raza', new_raza);
+    
 
-    peticiom_api_form_data("raza", formData)
+    try{
+        await PostFormData('raza/foto', formData)
+    }
+    catch(e){
+        console.log("error_foto")
+        console.log(e)
+    }
 
+    limpiar_guardar()
 }
+
+
+
+

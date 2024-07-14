@@ -7,6 +7,7 @@ import { Personaje } from 'apps/dd-back/src/entitys/personaje.entity';
 import { Stack } from 'apps/dd-back/src/entitys/stacks.entity';
 import { User } from 'apps/dd-back/src/entitys/user.entity';
 import { ConfigModule } from '@nestjs/config';
+import { FotoRaza } from 'apps/dd-back/src/entitys/fotoraza.entity';
 
 @Module({
     imports: [
@@ -15,7 +16,8 @@ import { ConfigModule } from '@nestjs/config';
             User,
             Personaje,
             Stack,
-            Afinidad
+            Afinidad,
+            FotoRaza
           ])
 
     ],

@@ -31,7 +31,7 @@ function activar_alerta() {
 async function crear_lista_personajes() {
     const filtro_user_val = filtro.options[filtro.selectedIndex].value
 
-    const data = await peticiom_api_normal_get(`personaje/Get_personaje?user=${filtro_user_val}`)
+    const data = await Get(`personaje/Get_personaje?user=${filtro_user_val}`)
     const select_personaje = document.getElementById("select_personaje")
     select_personaje.innerHTML = ""
 

@@ -3,7 +3,7 @@ $(document).ready( async function () {
 
 
     // cargar_stacks(stacks_this_personaje)
-    cargar_stacks( await peticiom_api_normal_get("personaje/stacks") )
+    cargar_stacks( await Get("personaje/stacks") )
 
 
 })
