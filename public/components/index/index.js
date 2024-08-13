@@ -18,6 +18,9 @@ function cargar_stacks(data) {
     for (item of data) {
         const element = document.createElement("div")
         element.classList.add("item_of_item_stacks")
+        element.style.color = "#"+item.colorLetra;
+        element.style.backgroundColor ="#"+item.color;
+        console.log(item)
         //////////////////////////////////////////////////
         const div_1 = document.createElement("div")
         const div_2 = document.createElement("div")

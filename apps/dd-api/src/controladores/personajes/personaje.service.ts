@@ -118,7 +118,9 @@ export class PersonajeService {
           stack_proces = stack_proces.concat({
             id:item.id,
             nombre : item.nombre,
-            val : stack_personaje ?stack_personaje.stack : 0 
+            val : stack_personaje ?stack_personaje.stack : 0 ,
+            color : item.color,
+            colorLetra : item.colorLetra,
           })
         }
         return stack_proces

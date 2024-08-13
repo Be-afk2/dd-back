@@ -20,6 +20,12 @@ export class Stack extends BaseEntity {
     @Column({default:true})
     automatico:boolean
 
+    @Column({default: "9d6bd0"})
+    color:string
+
+    @Column({default: "ffffff"})
+    colorLetra:string
+
     @DeleteDateColumn()
     deleted_at:Date;
     @CreateDateColumn()
