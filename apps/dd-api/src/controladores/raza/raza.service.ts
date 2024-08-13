@@ -11,6 +11,8 @@ import { Repository } from 'typeorm';
 import { CreateRazaDto } from './dto/RegisterRaza.dto';
 import { FotoRaza } from 'apps/dd-back/src/entitys/fotoraza.entity';
 import { throws } from 'assert';
+import * as moment from 'moment';
+import { ADDRGETNETWORKPARAMS } from 'dns';
 
 @Injectable()
 export class RazaService {
@@ -29,6 +31,47 @@ export class RazaService {
         private AfinidadRepository: Repository<Afinidad>,
     ) { }
 
+
+    async get_stacks_proces() {
+
+    }
+
+    async get_lista_raza_v2(paguina: number, cantidad: number) {
+
+        const [data, total] = await this.RazaRepository.findAndCount({
+            skip: (paguina - 1) * cantidad,
+            take: cantidad,
+        });
+
+        var data_proces = []
+        for (let raza of data) {
+            var afinidad_proces = []
+
+            const afinidades = await this.AfinidadRepository.findBy({id_raza:raza.id})
+            for(let afinidad of afinidades){
+                const stack = await this.StackRepository.findOneBy({id:afinidad.stack_id})
+                afinidad_proces.push({
+                    id:afinidad.id,
+                    stack_id : stack.id,
+                    stack_nombre : stack.nombre,
+                    stack : afinidad.stack
+                })
+            }
+            const foto = await this.FotoRazaRepository.findOneBy({id_raza:raza.id})
+            data_proces.push({
+                id:raza.id,
+                nombre : raza.nombre,
+                descripcion : raza.descripcion,
+                afinidades: afinidad_proces,
+                creado : moment(raza.created_at).format("DD-MM-YYYY"),
+                foto:foto.path
+            })
+
+        }
+
+
+        return { data_proces, total }
+    }
 
     async get_lista_razas() {
 
@@ -64,23 +107,23 @@ export class RazaService {
         return data_proces
     }
 
-    async guardar_afinidad(data:CreateRazaDto,id_raz:number){
+    async guardar_afinidad(data: CreateRazaDto, id_raz: number) {
 
         console.log(data)
 
-        for(let item of data.afinidad){
+        for (let item of data.afinidad) {
 
-            try{
-                
+            try {
+
                 const afinidad = await this.AfinidadRepository.save({
-                    id_raza:id_raz,
-                    stack : item.stack,
-                    stack_id : item.stack_id
+                    id_raza: id_raz,
+                    stack: item.stack,
+                    stack_id: item.stack_id
                 })
 
 
             }
-            catch(e){
+            catch (e) {
                 console.log("-----error_guardar_afinidad------------")
                 console.log(e)
                 console.log("-----------------")
@@ -97,22 +140,24 @@ export class RazaService {
         const raza = await this.RazaRepository.save({
             nombre: data.nombre,
             descripcion: data.descripcion,
+            xp_nivel: data.xp_nivel,
+            xp_recompenza: data.xp_recompenza,
             // animal: data.animal
 
         })
 
-        await this.guardar_afinidad(data,raza.id)
+        await this.guardar_afinidad(data, raza.id)
         return raza.id
     }
 
-    async dar_foto(id_raza ,ubicacion_foto){
+    async dar_foto(id_raza, ubicacion_foto) {
 
 
         const foto = await this.FotoRazaRepository.save({
-            path:ubicacion_foto,
-            id_raza:id_raza
+            path: ubicacion_foto,
+            id_raza: id_raza
         })
-        
+
     }
 
 }

@@ -19,6 +19,11 @@ export class Raza extends BaseEntity {
     // @Column({})
     // animal:boolean
 
+    @Column({default : 100})
+    xp_nivel : number
+
+    @Column({default : 20})
+    xp_recompenza : number
 
 
     @DeleteDateColumn()

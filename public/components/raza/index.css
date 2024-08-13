@@ -50,7 +50,8 @@
     flex-direction: row;
     background-color: #ffffff;
     justify-content: space-around;
-    height: 100%;
+    height: auto;
+    margin-top: 10px !important;
     
 }
 .row_2{
@@ -58,7 +59,15 @@
     flex-direction: row;
     background-color: #ffffff;
     justify-content: flex-start;
-    height: 100%;
+    height: auto;
+}
+
+.row_texarea{
+    display: flex;
+    flex-direction: row;
+    background-color: #ffffff;
+    justify-content: flex-start;
+    height: 100% !important;
 }
 
 .img_raza{
@@ -96,3 +105,14 @@ h5{
     justify-content: space-around;
     height: 100%;
 }
+.row_4{
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+    justify-content: space-around;
+    height: 10%;
+}
+.button_paguinador{
+    margin-top: 50vh !important;
+}
+

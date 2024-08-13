@@ -2,22 +2,26 @@
     <link rel="stylesheet" type="text/css" href="components/raza/index.css" />
 
     <%- contentFor('body') %>
-        <button id="boton_crear" onclick="cambiar_vista(1)"  type="button" class="btn btn-outline-primary">Crear</button>
-        <button id="boton_guardar_creacion" hidden onclick="guardar()"   type="button" class="btn btn-outline-primary">Guardar</button>
+        <button id="boton_crear" onclick="cambiar_vista(1)" type="button" class="btn btn-outline-primary">Crear</button>
+        <button id="boton_guardar_creacion" hidden onclick="guardar()" type="button"
+            class="btn btn-outline-primary">Guardar</button>
 
-        <div class="contenedor_padre" id="contenedor_padre_1" >
+        <div class="contenedor_padre" id="contenedor_padre_1">
+            <div style="height: 100%;" > 
+                <button id="boton_cambiar_paguina_1" class="button_paguinador" onclick="cambiar_paguina(2)"><</button>
+            </div>
             <div class="info_container">
                 <div class="paguina">
                     <div class="row_1">
                         <div class="item">
-                            <h5>nombre completo</h5>
+                            <h5 id="paguina_1_nombre">nombre completo</h5>
                         </div>
                         <div class="item">
-                            <img class="img_raza" src="/raza_images/necoarc.png" alt="foto" />
+                            <img class="img_raza" id="paguina_1_foto" src="/raza_images/necoarc.png" alt="foto" />
                         </div>
                     </div>
-                    <div class="row_2">
-                        <p>
+                    <div class="row_2" >
+                        <p id="paguina_1_descripcion">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                             eiusmod tempor incididunt ut labore et dolore magna aliqua. Nibh ipsum
                             consequat nisl vel. Malesuada bibendum arcu vitae elementum curabitur.
@@ -27,27 +31,32 @@
                         </p>
                     </div>
                     <div class="row_2">
-                        <p>
+                        <p id="paguina_1_afinidad">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                             eiusmod tempor incididunt ut labore et dolore magna aliqua. Nibh ipsum
                             consequat nisl vel. Malesuada bibendum arcu vitae elementum curabitur.
                             Nullam non nisi est sit. Pulvinar sapien et ligula ullamcorper
                             malesuada proin libero nunc consequat. Adipiscing bibendum est
                             ultricies integer quis.
+                        </p>
+                    </div>
+                    <div class="row_4" >
+                        <p id="paguina_1_paguina">
+                            1
                         </p>
                     </div>
                 </div>
                 <div class="paguina">
                     <div class="row_1">
                         <div class="item">
-                            <h5>nombre completo</h5>
+                            <h5 id="paguina_2_nombre">nombre completo</h5>
                         </div>
                         <div class="item">
-                            <img class="img_raza" src="/raza_images/perro.jpg" alt="foto" />
+                            <img class="img_raza" src="/raza_images/perro.jpg" alt="foto"  id="paguina_2_foto"/>
                         </div>
                     </div>
-                    <div class="row_2">
-                        <p>
+                    <div class="row_2" >
+                        <p id="paguina_2_descripcion">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                             eiusmod tempor incididunt ut labore et dolore magna aliqua. Nibh ipsum
                             consequat nisl vel. Malesuada bibendum arcu vitae elementum curabitur.
@@ -57,16 +66,24 @@
                         </p>
                     </div>
                     <div class="row_2">
-                        <p>
+                        <p id="paguina_2_afinidad">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                             eiusmod tempor incididunt ut labore et dolore magna aliqua. Nibh ipsum
                             consequat nisl vel. Malesuada bibendum arcu vitae elementum curabitur.
                             Nullam non nisi est sit. Pulvinar sapien et ligula ullamcorper
                             malesuada proin libero nunc consequat. Adipiscing bibendum est
                             ultricies integer quis.
+                        </p>
+                    </div>
+                    <div class="row_4" >
+                        <p id="paguina_2_paguina">
+                            1
                         </p>
                     </div>
                 </div>
+            </div>
+            <div style="height: 100%;">
+                <button id="boton_cambiar_paguina_2" onclick="cambiar_paguina(1)" class="button_paguinador">></button>
             </div>
         </div>
         <!-- ////////////////////////////////////////////////////////////////////////////////////////////////// -->
@@ -76,13 +93,14 @@
                     <div class="row_1">
                         <div class="item">
                             <h5><input class="form-control" id="input_nombre_raza" type="text"></h5>
-                            <h5><input id="input_foto" class="form-control" onchange="cargar_foto(this)" type="file"></h5>
+                            <h5><input id="input_foto" class="form-control" onchange="cargar_foto(this)" type="file">
+                            </h5>
                         </div>
                         <div class="item">
                             <img id="img_new_raza" class="img_raza" src="" alt="...." />
                         </div>
                     </div>
-                    <div class="row_2">
+                    <div class="row_texarea">
                         <textarea class="form-control textarea" name="" id="textarea_descripcion"></textarea>
                     </div>
                     <div class="row_3">
@@ -91,7 +109,8 @@
                             <input type="number" class="form-control"
                                 aria-label="Text input with segmented dropdown button" id="valor_stack_new">
                             <div class="input-group-append">
-                                <button type="button" onclick="asignar_afinidad()" class="btn btn-outline-secondary">Guardar</button>
+                                <button type="button" onclick="asignar_afinidad()"
+                                    class="btn btn-outline-secondary">Guardar</button>
                                 <button type="button"
                                     class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split"
                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -106,10 +125,9 @@
                                 </div>
                             </div>
                         </div>
-
-                        <p id="contenedor_afinidades">
-                            
-                        </p>
+                        <p id="contenedor_afinidades"></p>
+                        <input class="form-control" id="input_experiencia_derrotar" type="number" name="ex_ganada" required="" placeholder="experiencia al derrotar">
+                        <input class="form-control" id="input_experiencia_nivel" type="number" name="ex_requerida" required="" placeholder="experiencia para nivel EX*NL">
                     </div>
                 </div>
                 <div class="paguina">

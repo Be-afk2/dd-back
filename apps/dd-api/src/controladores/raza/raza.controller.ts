@@ -2,7 +2,7 @@
 https://docs.nestjs.com/controllers#controllers
 */
 
-import { Body, Controller, Get, Post, UploadedFile, UploadedFiles, UseInterceptors } from '@nestjs/common';
+import { Body, Controller, Get, Post, Query, UploadedFile, UploadedFiles, UseInterceptors } from '@nestjs/common';
 import { RazaService } from './raza.service';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { CreateRazaDto } from './dto/RegisterRaza.dto';
@@ -15,8 +15,13 @@ export class RazaController {
     ){}
 
 
+    @Get("v2")
+    async get_lista_razas_v2(@Query('paguina') paguina: number , @Query('cantidad') cantidad: number){
+        return await this.RazaService.get_lista_raza_v2(paguina,cantidad)
+    }
+
     @Get("")
-    async get_lista_razas(){
+    async get_lista_razas(@Query('paguina') paguina: number , @Query('cantidad') cantidad: number){
         return await this.RazaService.get_lista_razas()
     }
 
@@ -28,7 +33,9 @@ export class RazaController {
         console.log("hola---------")
         console.log("file",file)
         console.log("id_raza",Body.id_raza)
-        return await this.RazaService.dar_foto(Body.id_raza,file.path)
+        let modifiedPath = file.path.replace('public\\', '');
+        console.log("modifiedPath",modifiedPath)
+        return await this.RazaService.dar_foto(Body.id_raza,modifiedPath)
     }
 
     @Post()

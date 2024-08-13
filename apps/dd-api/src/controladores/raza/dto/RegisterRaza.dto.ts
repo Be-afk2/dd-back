@@ -7,6 +7,7 @@ import {
 	IsPositive,
 	IsString,
 	MaxLength,
+	MIN,
 	Min,
     ValidateNested,
 } from 'class-validator';
@@ -17,13 +18,22 @@ export class CreateRazaDto {
 	nombre: string;
 
     @IsString()
-	@MaxLength(1000)
+	@MaxLength(2500)
 	descripcion: string;
 
     @IsArray()
 	@ValidateNested({ each: true })
 	@Type(() => afinidad)
 	afinidad?: afinidad[];
+
+	@IsNumber()
+	@Min(1)
+	xp_nivel: number
+
+	@IsNumber()
+	@Min(1)
+	xp_recompenza: number
+
 }
 
 

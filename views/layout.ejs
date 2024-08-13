@@ -15,36 +15,14 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Jacquard+12&display=swap" rel="stylesheet">
   <title>Document</title>
+  <link rel="stylesheet" type="text/css" href="/components/layout/index.css" />
   <%- css %>
 
 
 </head>
 
 <style>
-  body {
-    width: 100%;
-    height: 100%;
-    /* Cambiado de 99% a 100% para ocupar toda la pantalla */
-    margin: 0 !important;
-    /* Agregado !important para asegurar que se aplique el margen correctamente */
-  }
 
-  .super_container {
-    height: 91vh;
-    padding: 1%;
-  }
-
-  /* * {
-    font-family: "Great Vibes", cursive;
-    font-weight: 400;
-    font-style: normal;
-  } */
-
-  /* * {
-    font-family: "Jacquard 12", system-ui;
-    font-weight: 400;
-    font-style: normal;
-  } */
 </style>
 
 <body>
@@ -97,6 +75,7 @@
     </div>
   </nav>
 
+  <div id="container_alerts" class="container_alerts"></div>
 
   <div class="super_container">
     <%- body %>
