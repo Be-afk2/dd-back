@@ -3,9 +3,9 @@ $(document).ready( async function () {
 
 
     // cargar_stacks(stacks_this_personaje)
-    cargar_stacks( await Get("personaje/stacks") )
 
-
+    console.log(token)
+    console.log(url_api)
 })
 
 

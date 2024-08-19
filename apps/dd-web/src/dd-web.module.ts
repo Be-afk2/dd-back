@@ -17,6 +17,7 @@ import { RazaModule } from './razas/raza.module';
 import { JwtModule } from '@nestjs/jwt';
 import { JwtStrategy } from 'apps/dd-api/src/controladores/auth/jwt.strategy';
 import { FotoRaza } from 'apps/dd-back/src/entitys/fotoraza.entity';
+import { PersonajeModule } from './personaje/personaje.module';
 
 @Module({
   imports: [
@@ -52,6 +53,7 @@ import { FotoRaza } from 'apps/dd-back/src/entitys/fotoraza.entity';
 
 
     RazaModule,
+    PersonajeModule
   ],
   controllers: [DdWebController],
   providers: [DdWebService,JwtStrategy],

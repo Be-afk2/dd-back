@@ -1,5 +1,5 @@
+import { PersonajeModule } from './../../dd-web/src/personaje/personaje.module';
 import { AuthModule } from './../../dd-api/src/controladores/auth/auth.module';
-import { PersonajeModule } from './../../dd-api/src/controladores/personajes/personaje.module';
 import { FuncionesService } from './../../dd-api/src/funciones.service';
 import { StackModule } from './../../dd-api/src/controladores/stacks/stack.module';
 import { RazaModule } from './../../dd-api/src/controladores/raza/raza.module';
@@ -24,6 +24,7 @@ import { FotoRaza } from './entitys/fotoraza.entity';
 
 @Module({
   imports: [
+    PersonajeModule,
     AuthModule,
     ConfigModule.forRoot({ envFilePath: '.env' }),
     TypeOrmModule.forRoot({

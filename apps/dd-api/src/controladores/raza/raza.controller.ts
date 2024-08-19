@@ -2,10 +2,11 @@
 https://docs.nestjs.com/controllers#controllers
 */
 
-import { Body, Controller, Get, Post, Query, UploadedFile, UploadedFiles, UseInterceptors } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, Query, UploadedFile, UploadedFiles, UseInterceptors } from '@nestjs/common';
 import { RazaService } from './raza.service';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { CreateRazaDto } from './dto/RegisterRaza.dto';
+import { ADDRGETNETWORKPARAMS } from 'dns';
 
 @Controller("raza")
 export class RazaController { 
@@ -23,6 +24,10 @@ export class RazaController {
     @Get("")
     async get_lista_razas(@Query('paguina') paguina: number , @Query('cantidad') cantidad: number){
         return await this.RazaService.get_lista_razas()
+    }
+    @Get("mini")
+    async get_mini_lista_raza(){
+        return await this.RazaService.get_mini_lista_raza()
     }
 
 
@@ -43,6 +48,16 @@ export class RazaController {
 
         console.log("hola---------")
         return await this.RazaService.crear(data)
+    }
+
+
+    @Get(":id")
+    async get_raza_by_id(
+        @Param('id') id: number,
+    ){
+
+
+        return await this.RazaService.get_raza(id)
     }
 
 }

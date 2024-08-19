@@ -1,0 +1,64 @@
+<%- contentFor('css') %>
+    <link rel="stylesheet" type="text/css" href="/components/personaje/crear/index.css" />
+
+    <%- contentFor('body') %>
+
+
+
+
+        <div class="contenedor_padre">
+            <div class="item colum" style="justify-content : space-evenly !important">
+
+                <p>Personaje</p>
+
+                <div class="element sombra">
+                    <P>Nombre</P>
+                    <input type="text" class="input-group" id="input_nombre">
+                </div>
+                <div class="element sombra">
+                    <P>Raza</P>
+                    <input type="text" class="input-group" list="opciones_list" id="input_raza">
+                    <datalist id="opciones_list">
+
+                    </datalist>
+                </div>
+
+
+                <!-- <div class="counter-container">
+                <button>-</button>
+                <span>54</span>
+                <button>+</button>
+            </div> -->
+                <!-- <div class="element sombra">3</div> -->
+
+            </div>
+            <div class="item colum">
+                <p id="titulo_stacks">Stacks</p>
+                <div class="element" id="contenedor_padre_stacks">
+
+
+                </div>
+
+            </div>
+            <div class="item colum">
+
+                <p>Resumen</p>
+
+                <div class="element">5</div>
+
+            </div>
+        </div>
+
+
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+        <script src="/components/personaje/crear/index.js"></script>
+
+        <script>
+            const url_api = "<%=process.env.API_PATH%>"
+            const token = "<%=token%>"
+        </script>
+
+        <script src="/components/funciones.js"></script>

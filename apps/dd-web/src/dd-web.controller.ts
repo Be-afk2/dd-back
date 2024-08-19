@@ -34,9 +34,15 @@ export class DdWebController {
   async login(@Body() body, @Request() req, @Res() res) {
     const data = JSON.parse(body.data)
     req.session.user = await this.ddWebService.login(data);
-
+    console.log(data)
+    if (data.id_personaje === "0") {
+      req.session.save(() => {
+        return res.redirect('/personaje/crear');
+      });
+      return 
+    }
     req.session.save(() => {
-      res.redirect('/');
+      return res.redirect('/');
     });
   }
 }

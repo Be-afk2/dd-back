@@ -2,7 +2,7 @@
 https://docs.nestjs.com/providers#services
 */
 
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Afinidad } from 'apps/dd-back/src/entitys/afinidad.entity';
 import { Raza } from 'apps/dd-back/src/entitys/raza.entity';
@@ -158,6 +158,43 @@ export class RazaService {
             id_raza: id_raza
         })
 
+    }
+
+    async get_raza(id_raza:number){
+
+        const raza = await this.RazaRepository.findOneBy({id:id_raza})
+        if(!raza){
+            throw new NotFoundException("Raza no encontrada")
+        }
+        const stack = await this.StackRepository.find()
+        var data_pro = []
+        for(let item of stack){
+
+            const afinidad = await this.AfinidadRepository.findOneBy({id_raza:id_raza,stack_id:item.id})
+            data_pro.push({
+                id:item.id,
+                nombre:item.nombre,
+                stack:afinidad ? afinidad.stack : 0
+            })
+
+        }
+
+        return data_pro
+
+    }
+
+
+    async get_mini_lista_raza(){
+
+        const razas = await this.RazaRepository.find({})
+        var data_pro  = []
+        for(let item of razas){
+            data_pro.push({
+                id:item.id,
+                nombre:item.nombre
+            })
+        }
+        return data_pro
     }
 
 }
