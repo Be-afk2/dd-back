@@ -1,10 +1,9 @@
 .item {
     background-color: #d6d6d6;
     border: 0px solid #000000;
-
-
 }
-.center{
+
+.center {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -13,12 +12,13 @@
     margin-right: 1%;
 }
 
-.stack_container{
+.stack_container {
     background-color: white;
     border-radius: 30px;
     font-size: 24px;
     font-weight: bold;
 }
+
 .element {
     background-color: #bebebe;
     border-radius: 30px;
@@ -27,11 +27,10 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    align-items : center;
-    
+    align-items: center;
 }
 
-.stacks{
+.stacks {
     background-color: #d6d6d6;
     width: 100%;
     padding: 1%;
@@ -39,10 +38,57 @@
     border-radius: 10px;
     display: flex;
     flex-direction: row;
-    justify-content:space-around;
+    justify-content: space-around;
+}
+
+.Resumen {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.scroll {
+    overflow-x: hidden;
+    overflow-y: scroll;
+    width: 100%;
+
 }
 
 
+
+.counter-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #ffffff;
+    /* Fondo blanco */
+    border-radius: 50px;
+    padding: 0px 10px;
+    width: 40%;
+    max-width: 200px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+}
+
+.counter-container button {
+    background: none;
+    border: none;
+    color: #0062ff;
+    /* Color del texto de los botones */
+    font-size: 18px;
+    cursor: pointer;
+    padding: 0 10px;
+}
+
+.counter-container span {
+    font-size: 24px;
+    font-weight: bold;
+    color: #000000;
+    /* Color del número */
+    margin: 0 10px;
+}
 
 .colum {
     display: flex;
@@ -89,13 +135,10 @@
     }
 }
 
-
 @media only screen and (max-width: 600px) {
-
     .super_container {
         height: auto !important;
         width: 94%;
-
     }
 
     .contenedor_padre {
@@ -107,11 +150,9 @@
         justify-content: space-between;
         scroll-behavior: auto;
         scroll-behavior: smooth;
-
     }
 
     .item {
-
         width: 100%;
         height: 540px;
         padding: 5%;
@@ -120,46 +161,12 @@
     }
 
     .element {
-
         width: 100%;
 
         height: 100%;
 
         padding: 4%;
-
     }
 
     /* //item sombra */
-
-
-}
-
-
-.counter-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background-color: #ffffff; /* Fondo blanco */
-    border-radius: 50px;
-    padding: 0px 10px;
-    width: 40%;
-    max-width: 200px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    box-sizing: border-box;
-}
-
-.counter-container button {
-    background: none;
-    border: none;
-    color: #0062ff; /* Color del texto de los botones */
-    font-size: 18px;
-    cursor: pointer;
-    padding: 0 10px;
-}
-
-.counter-container span {
-    font-size: 24px;
-    font-weight: bold;
-    color: #000000; /* Color del número */
-    margin: 0 10px;
 }

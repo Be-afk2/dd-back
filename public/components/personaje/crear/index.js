@@ -131,6 +131,9 @@ function aumenatar_contador(id_stack) {
         number = number + 1
         contador.innerHTML = number
     }
+    if(puntos_disponibles=== 0 ){
+        mostrar_resumen()
+    }
 
     document.getElementById("titulo_stacks").innerHTML = `Stacks (${puntos_disponibles})`
 }
@@ -153,6 +156,8 @@ function descontar_contador(id_stack) {
 
 }
 
-function mostrr_resumen (){
+function mostrar_resumen (){
     
+
+    console.log("resumen")
 }
