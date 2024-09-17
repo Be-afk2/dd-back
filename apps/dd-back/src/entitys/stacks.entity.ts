@@ -1,5 +1,5 @@
 
-import { Entity, Column, PrimaryGeneratedColumn,CreateDateColumn,UpdateDateColumn,DeleteDateColumn, Timestamp, Table, OneToMany} from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, DeleteDateColumn, Timestamp, Table, OneToMany } from 'typeorm';
 import { BaseEntity } from 'typeorm/repository/BaseEntity';
 
 
@@ -11,26 +11,128 @@ export class Stack extends BaseEntity {
 
 
     @Column()
-    nombre : string
+    nombre: string
 
-    @Column({default:""})
-    descripcion : string
+    @Column({ default: "" })
+    descripcion: string
 
 
-    @Column({default:true})
-    automatico:boolean
+    @Column({ default: true })
+    automatico: boolean
 
-    @Column({default: "9d6bd0"})
-    color:string
+    @Column({ default: "9d6bd0" })
+    color: string
 
-    @Column({default: "ffffff"})
-    colorLetra:string
+    @Column({ default: "ffffff" })
+    colorLetra: string
 
     @DeleteDateColumn()
-    deleted_at:Date;
+    deleted_at: Date;
     @CreateDateColumn()
-    created_at:Date;
+    created_at: Date;
     @UpdateDateColumn()
-    updated_at:Date;
+    updated_at: Date;
+
+
+    static async cargar_stack_base() {
+        const data = [
+            {
+                id: 1,
+                nombre: "Vida",
+                color: "e30000",
+                colorLetra: "ffffff",
+                descripcion: "Vitalidad de la criatura",
+                automatico: true
+
+            },
+            {
+                id: 2,
+                nombre: "Fuerza",
+                color: "ff0000",
+                colorLetra: "ffffff",
+                descripcion: "Fuerza de la criatura",
+                automatico: true
+
+            },
+            {
+                id: 3,
+                nombre: "Destreza",
+                color: "00ff00",
+                colorLetra: "ffffff",
+                automatico: true,
+                descripcion: "Destreza de la criatura",
+            },
+            {
+                id: 4,
+                nombre: "Inteligencia",
+                color: "0000ff",
+                colorLetra: "ffffff",
+                descripcion: "Inteligencia de la criatura",
+                automatico: true
+
+            },
+            {
+                id: 5,
+                nombre: "Carisma",
+                color: "ff00ff",
+                colorLetra: "ffffff",
+                descripcion: "Carisma de la criatura",
+                automatico: true
+
+            },
+            {
+                id: 6,
+                nombre: "Resistencia",
+                color: "ffff00",
+                colorLetra: "000000",
+                descripcion: "Resistencia de la criatura",
+                automatico: true
+            }, {
+
+                id: 7,
+                nombre: "Magia de Fuego",
+                color: "ff0000",
+                colorLetra: "ffffff",
+                descripcion: "Magia de fuego",
+                automatico: false
+            },
+            {
+
+                id: 8,
+                nombre: "Magia de Tierra",
+                color: "00ff00",
+                colorLetra: "ffffff",
+                descripcion: "Magia de tierra",
+                automatico: false
+            },
+            {
+
+                id: 9,
+                nombre: "Magia de Agua",
+                color: "0000ff",
+                colorLetra: "ffffff",
+                descripcion: "Magia de agua",
+                automatico: false
+            },
+
+        ]
+
+
+        for(let item of data){
+            const test = await this.findOneBy({id:item.id})
+            if(test){continue}
+            await this.save({
+                id: item.id,
+                nombre : item.nombre,
+                color : item.color,
+                colorLetra : item.colorLetra,
+                descripcion : item.descripcion,
+                automatico : item.automatico
+            })    
+        }
+
+        return "ok"
+        
+    }
 
 }

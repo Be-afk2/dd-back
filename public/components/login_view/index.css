@@ -1,7 +1,7 @@
 /* Estilos para teléfonos */
 @media only screen and (max-width: 600px) {
     body {
-        background-image: url("https://images.pexels.com/photos/1590549/pexels-photo-1590549.jpeg");
+
         background-repeat: no-repeat;
         position: absolute;
         width: 100%;
@@ -13,7 +13,7 @@
 /* Estilos para computadoras */
 @media only screen and (min-width: 601px) {
     body {
-        background-image: url("https://img.freepik.com/free-photo/breathtaking-shot-deep-blue-ocean-mountain-range-dark-cloudy-day_181624-12585.jpg");
+
         background-size: cover;
         background-repeat: no-repeat;
         position: absolute;

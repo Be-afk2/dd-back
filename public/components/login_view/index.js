@@ -1,6 +1,28 @@
 const filtro = document.getElementById("select_user")
 const filtro2 = document.getElementById("select_personaje")
+//para telefono
+const mediaQuery = window.matchMedia("(max-width: 600px)");
 
+function handleMediaQueryChange(e) {
+    if (e.matches) {
+        // Si la pantalla tiene un ancho máximo de 600px
+        console.log("Pantalla de 600px o menos");
+        document.body.style.backgroundImage = `url('${url_web}background_image_telefono/2.jpg')`;
+        // Puedes agregar aquí cualquier lógica adicional
+    } else {
+        // Si la pantalla es mayor a 600px
+        console.log("Pantalla de más de 600px");
+        document.body.style.backgroundImage = `url('${url_web}background_image_pc/3.jpg')`;
+        // Lógica adicional para pantallas más grandes
+    }
+    console.log(`url('${url_web}background_image_pc/3.jpg')`)
+
+}
+
+handleMediaQueryChange(mediaQuery);
+
+// Escucha los cambios en la media query
+mediaQuery.addListener(handleMediaQueryChange);
 
 function comprobar_selects() {
     try {
@@ -70,3 +92,5 @@ function mandar_formulario() {
     formulario.submit()
 
 }
+
+console.log(url_web)

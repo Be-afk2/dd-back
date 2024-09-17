@@ -2,8 +2,9 @@
 https://docs.nestjs.com/controllers#controllers
 */
 
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Post } from '@nestjs/common';
 import { StackService } from './stack.service';
+import { Stack } from 'apps/dd-back/src/entitys/stacks.entity';
 
 @Controller("stack")
 export class StackController {
@@ -18,6 +19,11 @@ export class StackController {
         return await this.StackService.get_stacks()
     }
 
+
+    @Post("base")
+    async cargar_stack_base(){
+        return Stack.cargar_stack_base()
+    }
 
 
 }
