@@ -21,6 +21,7 @@ import { TipoObjeto } from './entitys/tipo_objeto.entity';
 import { Equipo } from './entitys/equipo.entity';
 import { Inventario } from './entitys/inventario.entity';
 import { FotoRaza } from './entitys/fotoraza.entity';
+import { StackBase } from './entitys/stackBase.entity';
 
 @Module({
   imports: [
@@ -46,7 +47,8 @@ import { FotoRaza } from './entitys/fotoraza.entity';
         TipoObjeto,
         Equipo,
         Inventario,
-        FotoRaza
+        FotoRaza,
+        StackBase
       ],
     }),
 

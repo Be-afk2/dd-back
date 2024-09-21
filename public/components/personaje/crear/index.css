@@ -1,5 +1,5 @@
 .item {
-    background-color: #d6d6d6;
+    background-color: #ffffff;
     border: 0px solid #000000;
 }
 
@@ -20,7 +20,7 @@
 }
 
 .element {
-    background-color: #bebebe;
+    background-color: #afcff548;
     border-radius: 30px;
     margin-bottom: 10px;
     display: flex;

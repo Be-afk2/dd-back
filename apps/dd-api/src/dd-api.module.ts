@@ -16,6 +16,7 @@ import { PersonajeModule } from './controladores/personajes/personaje.module';
 import { AuthModule } from './controladores/auth/auth.module';
 import { JwtModule } from '@nestjs/jwt';
 import { FotoRaza } from 'apps/dd-back/src/entitys/fotoraza.entity';
+import { StackBase } from 'apps/dd-back/src/entitys/stackBase.entity';
 
 @Module({
   imports: [
@@ -36,7 +37,8 @@ import { FotoRaza } from 'apps/dd-back/src/entitys/fotoraza.entity';
         StackPersonaje,
         Personaje,
         Objeto,
-        FotoRaza
+        FotoRaza,
+        StackBase
       ],
 
 

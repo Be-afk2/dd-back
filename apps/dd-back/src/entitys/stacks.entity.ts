@@ -26,6 +26,11 @@ export class Stack extends BaseEntity {
     @Column({ default: "ffffff" })
     colorLetra: string
 
+
+    @Column({ default: 0 })
+    base : number;
+
+
     @DeleteDateColumn()
     deleted_at: Date;
     @CreateDateColumn()
@@ -42,7 +47,8 @@ export class Stack extends BaseEntity {
                 color: "e30000",
                 colorLetra: "ffffff",
                 descripcion: "Vitalidad de la criatura",
-                automatico: true
+                automatico: true,
+                base: 5
 
             },
             {
@@ -51,7 +57,9 @@ export class Stack extends BaseEntity {
                 color: "ff0000",
                 colorLetra: "ffffff",
                 descripcion: "Fuerza de la criatura",
-                automatico: true
+                automatico: true,
+                base: 1
+
 
             },
             {
@@ -61,6 +69,8 @@ export class Stack extends BaseEntity {
                 colorLetra: "ffffff",
                 automatico: true,
                 descripcion: "Destreza de la criatura",
+                base: 1
+
             },
             {
                 id: 4,
@@ -68,7 +78,9 @@ export class Stack extends BaseEntity {
                 color: "0000ff",
                 colorLetra: "ffffff",
                 descripcion: "Inteligencia de la criatura",
-                automatico: true
+                automatico: true,
+                base: 1
+
 
             },
             {
@@ -77,7 +89,9 @@ export class Stack extends BaseEntity {
                 color: "ff00ff",
                 colorLetra: "ffffff",
                 descripcion: "Carisma de la criatura",
-                automatico: true
+                automatico: true,
+                base: 1
+
 
             },
             {
@@ -86,7 +100,9 @@ export class Stack extends BaseEntity {
                 color: "ffff00",
                 colorLetra: "000000",
                 descripcion: "Resistencia de la criatura",
-                automatico: true
+                automatico: true,
+                base: 1
+
             }, {
 
                 id: 7,
@@ -94,7 +110,9 @@ export class Stack extends BaseEntity {
                 color: "ff0000",
                 colorLetra: "ffffff",
                 descripcion: "Magia de fuego",
-                automatico: false
+                automatico: false,
+                base: 0
+
             },
             {
 
@@ -103,7 +121,9 @@ export class Stack extends BaseEntity {
                 color: "00ff00",
                 colorLetra: "ffffff",
                 descripcion: "Magia de tierra",
-                automatico: false
+                automatico: false,
+                base: 0
+
             },
             {
 
@@ -112,7 +132,9 @@ export class Stack extends BaseEntity {
                 color: "0000ff",
                 colorLetra: "ffffff",
                 descripcion: "Magia de agua",
-                automatico: false
+                automatico: false,
+                base: 0
+
             },
 
         ]
@@ -127,7 +149,8 @@ export class Stack extends BaseEntity {
                 color : item.color,
                 colorLetra : item.colorLetra,
                 descripcion : item.descripcion,
-                automatico : item.automatico
+                automatico : item.automatico,
+                base : item.base
             })    
         }
 

@@ -18,6 +18,7 @@ import { JwtModule } from '@nestjs/jwt';
 import { JwtStrategy } from 'apps/dd-api/src/controladores/auth/jwt.strategy';
 import { FotoRaza } from 'apps/dd-back/src/entitys/fotoraza.entity';
 import { PersonajeModule } from './personaje/personaje.module';
+import { StackBase } from 'apps/dd-back/src/entitys/stackBase.entity';
 
 @Module({
   imports: [
@@ -35,7 +36,8 @@ import { PersonajeModule } from './personaje/personaje.module';
         Personaje,
         Stack,
         Afinidad,
-        FotoRaza
+        FotoRaza,
+        StackBase
       ],
     }),
     TypeOrmModule.forFeature([

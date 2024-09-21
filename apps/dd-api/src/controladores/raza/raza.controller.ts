@@ -55,8 +55,6 @@ export class RazaController {
     async get_raza_by_id(
         @Param('id') id: number,
     ){
-
-
         return await this.RazaService.get_raza(id)
     }
 

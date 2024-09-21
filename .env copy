@@ -5,7 +5,7 @@ DB_PASSWORD=
 DB_USER=root
 DB_PORT=3306
 #pass--------------
-JWT_SECRET = sdf
+JWT_SECRET = dd_Caserouwu_owo123
 #otros-------------
 VERSION = 0.0.1
 #--------ports-------------
@@ -13,5 +13,13 @@ API_PORT = 3005
 BACK_PORT = 3006
 WEB_PORT = 3004
 #-------------path
-WEB_PATH = http://192.168.1.5:3004/
-API_PATH = http://192.168.1.5:3005/
+# WEB_PATH = http://127.0.0.1:3004/
+# API_PATH = http://127.0.0.1:3005/
+
+
+WEB_PATH = http://192.168.1.9:3004/
+API_PATH = http://192.168.1.9:3005/
+
+
+# WEB_PATH = http://10.110.76.141:3004/
+# API_PATH = http://10.110.76.141:3005/

@@ -177,6 +177,7 @@ function cambiar_numero_pag(paguina) {
     const paguina_pro = paguina * 2
     paguina_1.innerHTML = paguina_pro - 1
     paguina_2.innerHTML = paguina_pro
+    return paguina_pro
 }
 
 function cargar_imagenes(img1, id_foto) {
@@ -238,7 +239,7 @@ async function cargar_datos(paguina) {
 
     const data = await Get(`raza/v2?paguina=${paguina}&cantidad=${2}`)
     console.log(data.data_proces)
-    cambiar_numero_pag(paguina)
+    const ultima_pag = cambiar_numero_pag(paguina)
 
     if(paguina === 1){
         bloquar_desbloquear_boton(true,"boton_cambiar_paguina_1")
@@ -262,6 +263,10 @@ async function cargar_datos(paguina) {
         bloquar_desbloquear_boton(true,"boton_cambiar_paguina_2")
     }
 
+    console.log(data.total)
+    if(ultima_pag >= data.total){
+        bloquar_desbloquear_boton(true,"boton_cambiar_paguina_2")
+    }
 
 }
 

@@ -174,7 +174,8 @@ export class RazaService {
             data_pro.push({
                 id:item.id,
                 nombre:item.nombre,
-                stack:afinidad ? afinidad.stack : 0
+                stack:afinidad ? afinidad.stack : 0,
+                base : item.base
             })
 
         }
