@@ -31,6 +31,7 @@ export class DdWebController {
   }
 
   @Post("login")
+
   async login(@Body() body, @Request() req, @Res() res) {
     const data = JSON.parse(body.data)
     req.session.user = await this.ddWebService.login(data);
@@ -44,5 +45,14 @@ export class DdWebController {
     req.session.save(() => {
       return res.redirect('/');
     });
+  }
+
+
+
+  @Get("exit")
+  async exit(@Request() req, @Res() res) {
+    req.session.destroy(() => {
+      return res.redirect('/loginView');
+    })
   }
 }

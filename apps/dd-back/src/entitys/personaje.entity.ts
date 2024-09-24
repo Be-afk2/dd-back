@@ -12,7 +12,7 @@ export class Personaje extends BaseEntity {
     @Column()
     nombre:string;
 
-    @Column({default:0})
+    @Column({default:1})
     nivel : number;
 
     @Column()
@@ -31,6 +31,8 @@ export class Personaje extends BaseEntity {
     @Column({nullable:true})
     user_id : number
 
+    @Column({nullable:true})
+    historia : string
 
     @DeleteDateColumn()
     deleted_at:Date;

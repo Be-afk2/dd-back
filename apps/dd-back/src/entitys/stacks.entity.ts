@@ -20,7 +20,7 @@ export class Stack extends BaseEntity {
     @Column({ default: true })
     automatico: boolean
 
-    @Column({ default: "9d6bd0" })
+    @Column({ default: "#ffffff00" })
     color: string
 
     @Column({ default: "ffffff" })
@@ -44,8 +44,8 @@ export class Stack extends BaseEntity {
             {
                 id: 1,
                 nombre: "Vida",
-                color: "e30000",
-                colorLetra: "ffffff",
+                color: "ffffff00",
+                colorLetra: "000000",
                 descripcion: "Vitalidad de la criatura",
                 automatico: true,
                 base: 5
@@ -54,8 +54,8 @@ export class Stack extends BaseEntity {
             {
                 id: 2,
                 nombre: "Fuerza",
-                color: "ff0000",
-                colorLetra: "ffffff",
+                color: "ffffff00",
+                colorLetra: "000000",
                 descripcion: "Fuerza de la criatura",
                 automatico: true,
                 base: 1
@@ -65,8 +65,8 @@ export class Stack extends BaseEntity {
             {
                 id: 3,
                 nombre: "Destreza",
-                color: "00ff00",
-                colorLetra: "ffffff",
+                color: "ffffff00",
+                colorLetra: "000000",
                 automatico: true,
                 descripcion: "Destreza de la criatura",
                 base: 1
@@ -75,8 +75,8 @@ export class Stack extends BaseEntity {
             {
                 id: 4,
                 nombre: "Inteligencia",
-                color: "0000ff",
-                colorLetra: "ffffff",
+                color: "ffffff00",
+                colorLetra: "000000",
                 descripcion: "Inteligencia de la criatura",
                 automatico: true,
                 base: 1
@@ -86,8 +86,8 @@ export class Stack extends BaseEntity {
             {
                 id: 5,
                 nombre: "Carisma",
-                color: "ff00ff",
-                colorLetra: "ffffff",
+                color: "ffffff00",
+                colorLetra: "000000",
                 descripcion: "Carisma de la criatura",
                 automatico: true,
                 base: 1
@@ -97,7 +97,7 @@ export class Stack extends BaseEntity {
             {
                 id: 6,
                 nombre: "Resistencia",
-                color: "ffff00",
+                color: "ffffff00",
                 colorLetra: "000000",
                 descripcion: "Resistencia de la criatura",
                 automatico: true,
@@ -107,8 +107,8 @@ export class Stack extends BaseEntity {
 
                 id: 7,
                 nombre: "Magia de Fuego",
-                color: "ff0000",
-                colorLetra: "ffffff",
+                color: "ffffff00",
+                colorLetra: "000000",
                 descripcion: "Magia de fuego",
                 automatico: false,
                 base: 0
@@ -118,8 +118,8 @@ export class Stack extends BaseEntity {
 
                 id: 8,
                 nombre: "Magia de Tierra",
-                color: "00ff00",
-                colorLetra: "ffffff",
+                color: "ffffff00",
+                colorLetra: "000000",
                 descripcion: "Magia de tierra",
                 automatico: false,
                 base: 0
@@ -129,8 +129,8 @@ export class Stack extends BaseEntity {
 
                 id: 9,
                 nombre: "Magia de Agua",
-                color: "0000ff",
-                colorLetra: "ffffff",
+                color: "ffffff00",
+                colorLetra: "000000",
                 descripcion: "Magia de agua",
                 automatico: false,
                 base: 0

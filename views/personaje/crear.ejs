@@ -7,7 +7,7 @@
 
 
         <div class="contenedor_padre">
-            <div class="item colum" style="justify-content : space-evenly !important">
+            <div class="item colum scroll" style="justify-content : space-evenly !important">
 
                 <p>Personaje</p>
 
@@ -23,18 +23,22 @@
                     </datalist>
                 </div>
 
+                <div class="element sombra">
+                    <P>Historia</P>
+                    <textarea class="input-group" name="" id="input_Historia"></textarea>
+                </div>
 
                 <!-- <div class="counter-container">
                 <button>-</button>
                 <span>54</span>
                 <button>+</button>
-            </div> -->
+                </div> -->
                 <!-- <div class="element sombra">3</div> -->
 
             </div>
             <div class="item colum">
                 <p id="titulo_stacks">Stacks</p>
-                <div class="element" id="contenedor_padre_stacks">
+                <div class="element scroll" id="contenedor_padre_stacks">
 
 
                 </div>
@@ -43,7 +47,7 @@
             <div class="item colum">
 
                 <p>Resumen</p>
-                <div class="Resumen scroll" id="contenedor_padre_resumen">
+                <div class="Resumen scroll" id="contenedor_padre_resumen" hidden>
 
                     <div class="element" id="resumen_personaje">
 
@@ -54,6 +58,8 @@
 
                     </div>
 
+                    <br>
+                    <button type="button" class="btn btn-primary" onclick="Crear()">Primary</button>
                 </div>
 
 
@@ -68,8 +74,10 @@
         <script src="/components/personaje/crear/index.js"></script>
 
         <script>
-            const url_api = "<%=process.env.API_PATH%>"
+            var url_api = "<%=process.env.API_PATH%>"
+            const url_web = "<%=process.env.WEB_PATH%>"
             const token = "<%=token%>"
+            const id_user = "<%=id_user%>"
         </script>
 
-        <script src="/components/funciones.js"></script> 
+        <script src="/components/funciones.js"></script>

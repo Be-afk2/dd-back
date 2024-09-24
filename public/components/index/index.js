@@ -1,11 +1,12 @@
 const contenedor_stacks = document.getElementById("contenedor_stacks")
 $(document).ready( async function () {
 
-
-    // cargar_stacks(stacks_this_personaje)
+    const stacks_this_personaje = await Get("personaje/stacks")
 
     console.log(token)
     console.log(url_api)
+    cargar_stacks(stacks_this_personaje)
+
 })
 
 

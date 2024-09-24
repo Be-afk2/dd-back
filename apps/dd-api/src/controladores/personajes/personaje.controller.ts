@@ -6,6 +6,7 @@ import { Body, Controller, Get, Post, Query, UseGuards ,Request} from '@nestjs/c
 import { PersonajeService } from './personaje.service';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 import { JwtService } from '@nestjs/jwt';
+import { CrearPersonajeDto } from './dto/CrearPersonajeDto.dto';
 
 
 @Controller("personaje")
@@ -55,6 +56,13 @@ export class PersonajeController {
     }
 
 
+    @Post("Crear")
+    @UseGuards(JwtAuthGuard)
+    async Crear_personaje_User(@Body() data :CrearPersonajeDto,@Request() req){
+
+        return await this.PersonajeService.CrearPersonaje(data,req.user.id_user)
+
+    }
 
 
 }

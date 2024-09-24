@@ -2,6 +2,7 @@ var razas_lista = []
 var raza_selecionada
 var puntos_disponibles = 4
 var stack_raza
+var stack_agregado_nivel = []
 $(document).ready(async function () {
 
 
@@ -198,6 +199,26 @@ function crear_elemento_stack(item) {
 
 
 
+function agergar_lista_stacks(id_stack) {
+
+    var item = stack_agregado_nivel.find(item => item.stack_id == id_stack)
+
+    if (!item) {
+        stack_agregado_nivel.push({ stack_id: id_stack, stack: 1 });
+    } else {
+        item.stack += 1;
+    }
+}
+
+function quitar_lista_stack(id_stack) {
+
+    var item = stack_agregado_nivel.find(item => item.stack_id == id_stack)
+
+    if (item) {
+        item.stack -= 1;
+    }
+
+}
 
 function aumenatar_contador(id_stack) {
     const contador = document.getElementById("stack_raza_" + id_stack)
@@ -206,6 +227,7 @@ function aumenatar_contador(id_stack) {
     if (puntos_disponibles > 0) {
         puntos_disponibles = puntos_disponibles - 1
         number = number + 1
+        agergar_lista_stacks(id_stack)
         contador.innerHTML = number
         ocultar_resumen()
     }
@@ -224,6 +246,8 @@ function descontar_contador(id_stack) {
 
     if (number > 0) {
         number = number - 1
+        quitar_lista_stack(id_stack)
+
         contador.innerHTML = number
         puntos_disponibles = puntos_disponibles + 1
     }
@@ -236,23 +260,24 @@ function descontar_contador(id_stack) {
 }
 
 function mostrar_resumen() {
-const contenedor_padre = document.getElementById("resumen_stack")
-const contenedor_padre_personaje = document.getElementById("resumen_personaje")
+    const contenedor_padre = document.getElementById("resumen_stack")
+    const contenedor_padre_personaje = document.getElementById("resumen_personaje")
+    document.getElementById("contenedor_padre_resumen").removeAttribute("hidden");
 
-contenedor_padre.innerHTML = ""
-contenedor_padre_personaje.innerHTML = ""
+    contenedor_padre.innerHTML = ""
+    contenedor_padre_personaje.innerHTML = ""
     for (let item of stack_raza) {
-        crear_stack_resumen(item,contenedor_padre)
+        crear_stack_resumen(item, contenedor_padre)
     }
 
-    crear_personaje_resumen(contenedor_padre_personaje,"input_nombre")
-    crear_personaje_resumen(contenedor_padre_personaje,"input_raza")
+    crear_personaje_resumen(contenedor_padre_personaje, "input_nombre")
+    crear_personaje_resumen(contenedor_padre_personaje, "input_raza")
     console.log("resumen")
 }
 
 
 
-function crear_stack_resumen(item,contenedor_padre) {
+function crear_stack_resumen(item, contenedor_padre) {
 
     //     <div class="stacks">
     //          <div class="center">Vida</div>
@@ -278,21 +303,22 @@ function crear_stack_resumen(item,contenedor_padre) {
     stak.innerText = item.stack + item.base + parseInt(stack_agregado.innerHTML)
 
     stack.appendChild(nombre)
-    stack.appendChild(stak) 
+    stack.appendChild(stak)
     contenedor_padre.appendChild(stack)
 }
 
-function ocultar_resumen(){
+function ocultar_resumen() {
     const contenedor_padre = document.getElementById("resumen_stack")
     const resumen_personaje = document.getElementById("resumen_personaje")
+    document.getElementById("contenedor_padre_resumen").setAttribute("hidden", true)
 
     contenedor_padre.innerHTML = ""
     resumen_personaje.innerHTML = ""
 }
 
-function crear_personaje_resumen(contenedor_padre,id){
+function crear_personaje_resumen(contenedor_padre, id) {
 
-    
+
 
     const stack = document.createElement("div")
     stack.classList.add("stacks")
@@ -307,4 +333,33 @@ function crear_personaje_resumen(contenedor_padre,id){
     stack.appendChild(nombre)
     contenedor_padre.appendChild(stack)
 
+}
+
+
+async function Crear() {
+
+    const nombre = document.getElementById("input_nombre").value
+    const raza = raza_selecionada
+    const historia = document.getElementById("input_Historia").value
+    console.log("--------")
+    console.log("raza", raza)
+    console.log("nombre", nombre)
+    console.log("stack_agregado_nivel", stack_agregado_nivel)
+    console.log("historia", historia)
+
+
+    const data = {
+        nombre: nombre,
+        razaId: raza.id,
+        historia: historia,
+        staks: stack_agregado_nivel
+    }
+
+    console.log(data)
+    console.log(JSON.stringify(data))
+
+    const personaje = await Post("personaje/Crear", data)
+
+
+    window.location.replace(url_web + "exit");
 }

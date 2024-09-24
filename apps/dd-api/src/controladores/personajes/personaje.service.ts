@@ -12,6 +12,7 @@ import { Stack } from 'apps/dd-back/src/entitys/stacks.entity';
 import { StackPersonaje } from 'apps/dd-back/src/entitys/stacks_personajes.entity';
 import { Repository } from 'typeorm';
 import { JwtService } from '@nestjs/jwt';
+import { CrearPersonajeDto } from './dto/CrearPersonajeDto.dto';
 
 @Injectable()
 export class PersonajeService {
@@ -29,7 +30,7 @@ export class PersonajeService {
 
         @InjectRepository(Personaje)
         private PersonajeRepository: Repository<Personaje>,
-    ){}
+    ) { }
 
 
 
@@ -86,46 +87,90 @@ export class PersonajeService {
     }
 
 
-    async get_by_id(user_id){
+    async get_by_id(user_id) {
 
 
-        const personajes = await this.PersonajeRepository.findBy({user_id:user_id, vivo:true})
+        const personajes = await this.PersonajeRepository.findBy({ user_id: user_id, vivo: true })
         var data = []
-        for(let item of personajes){
+        for (let item of personajes) {
             data = data.concat({
                 id: item.id,
-                nombre : item.nombre
+                nombre: item.nombre
             })
         }
-        
+
         return data
 
     }
 
-    async get_stacks(id_personaje){
-        const personaje = await this.PersonajeRepository.findOneBy({id:id_personaje})
+    async get_stacks(id_personaje) {
+        const personaje = await this.PersonajeRepository.findOneBy({ id: id_personaje })
         const stacks = await this.StackRepository.find()
         var stack_proces = []
-        for(let item of stacks){
-    
+        for (let item of stacks) {
+
 
 
             const stack_personaje = await this.StackPersonajeRepository.findOneBy({
-                idStack:item.id,
-                id_Personaje : personaje.id})
+                idStack: item.id,
+                id_Personaje: personaje.id
+            })
+
+            const afinidad = await this.AfinidadRepository.findOneBy({ id_raza: personaje.raza, stack_id: item.id })
 
 
-          stack_proces = stack_proces.concat({
-            id:item.id,
-            nombre : item.nombre,
-            val : stack_personaje ?stack_personaje.stack : 0 ,
-            color : item.color,
-            colorLetra : item.colorLetra,
-          })
+            const afinidad_valor = afinidad ? afinidad.stack : 0
+            const stack_personaje_valor = stack_personaje ? stack_personaje.stack : 0
+
+            stack_proces = stack_proces.concat({
+                id: item.id,
+                nombre: item.nombre,
+                val : stack_personaje_valor + afinidad_valor,
+                valores: {
+                    stack_personaje: stack_personaje_valor,
+                    afinidad:afinidad_valor,
+                    total : stack_personaje_valor + afinidad_valor
+                },
+                color: item.color,
+                colorLetra: item.colorLetra,
+            })
         }
         return stack_proces
-      }
+    }
 
 
+    async crear_stacks(id_personaje:number, stcks){
 
+        console.log(stcks)
+
+        for(let item of stcks){ 
+
+            const stack = await this.StackPersonajeRepository.save({
+
+                idStack : item.stack_id,
+                stack:item.stack,
+                id_Personaje : id_personaje
+            })
+
+        }
+    }
+
+    async CrearPersonaje(data: CrearPersonajeDto,id_user:number) {
+
+        const personaje  = await this.PersonajeRepository.create()
+
+        personaje.user_id = id_user
+
+        personaje.raza = data.razaId
+        personaje.nombre = data.nombre
+        personaje.historia = data.historia,
+        personaje.vivo = true
+
+        await personaje.save()
+
+        await this.crear_stacks(personaje.id,data.staks)
+
+
+        return personaje
+    }
 }
