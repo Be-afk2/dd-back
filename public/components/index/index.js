@@ -1,4 +1,28 @@
 const contenedor_stacks = document.getElementById("contenedor_stacks")
+
+const data_Test_invetario = [
+    { "id": 1, "nombre": "objeto1" },
+    { "id": 2, "nombre": "objeto2" },
+    { "id": 3, "nombre": "objeto3" },
+    { "id": 4, "nombre": "objeto4" },
+    { "id": 5, "nombre": "objeto5" },
+    { "id": 6, "nombre": "objeto6" },
+    { "id": 7, "nombre": "objeto7" },
+    { "id": 8, "nombre": "objeto8" },
+    { "id": 9, "nombre": "objeto9" },
+    { "id": 10, "nombre": "objeto10" },
+    { "id": 11, "nombre": "objeto11" },
+    { "id": 12, "nombre": "objeto12" },
+    { "id": 13, "nombre": "objeto13" },
+    { "id": 14, "nombre": "objeto14" },
+    { "id": 15, "nombre": "objeto15" },
+    { "id": 16, "nombre": "objeto16" },
+    { "id": 17, "nombre": "objeto17" },
+    { "id": 18, "nombre": "objeto18" },
+    { "id": 19, "nombre": "objeto19" },
+    { "id": 20, "nombre": "objeto20" }
+  ]
+
 $(document).ready( async function () {
 
     const stacks_this_personaje = await Get("personaje/stacks")
@@ -6,7 +30,7 @@ $(document).ready( async function () {
     console.log(token)
     console.log(url_api)
     cargar_stacks(stacks_this_personaje)
-
+    cargar_inventario(data_Test_invetario)
 })
 
 
@@ -63,5 +87,20 @@ function cargar_stacks(data) {
         element.appendChild(div_4)
         contenedor_stacks.appendChild(element)
     }
+
+
+
+}
+
+function cargar_inventario(data) {
+    const inventario = document.getElementById("inventario")
+    for(let item of data){
+        const div = document.createElement("div")
+        div.classList.add("caja_inventario")
+        div.innerText = item.nombre
+        inventario.appendChild(div)
+    }
+
+
 
 }

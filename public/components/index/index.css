@@ -1,3 +1,26 @@
+.flex_row {
+    display: flex;
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    align-items: flex-start !important;
+}
+
+.scroll{
+    overflow: scroll;
+}
+
+.caja_inventario{
+    width: 100px;
+    height: 100px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2px;
+
+    border: 2px solid rgb(115, 156, 209);
+}
+
 @media only screen and (min-width: 601px) {
     .flex_colum {
         display: flex;
