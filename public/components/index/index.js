@@ -98,6 +98,9 @@ function cargar_inventario(data) {
         const div = document.createElement("div")
         div.classList.add("caja_inventario")
         div.innerText = item.nombre
+        div.onclick = function(){
+            console.log(item)
+        }
         inventario.appendChild(div)
     }
 
