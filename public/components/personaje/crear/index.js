@@ -360,6 +360,6 @@ async function Crear() {
 
     const personaje = await Post("personaje/Crear", data)
 
-
-    window.location.replace(url_web + "exit");
+    console.log(personaje)
+        // window.location.replace(url_web + "exit");
 }

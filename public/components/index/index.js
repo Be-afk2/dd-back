@@ -32,23 +32,30 @@ function cargar_stacks(data) {
         div_3.style.width = "50%"
         div_4.style.width = "50%"
         ///////////////////////////////7
-        div_1.innerText = `${item.nombre} :  ${item.val}`
+        div_1.innerText = `${item.nombre} :  ${item.valores.total}`
         ////////////////////////////////////////////////////
+        // para afinidad
         const valor_extra_afinidad = document.createElement("span")
         valor_extra_afinidad.classList.add("badge", "badge-primary", "badge-pill")
-        valor_extra_afinidad.innerText = 1
+        valor_extra_afinidad.innerText = item.valores.afinidad
         div_2.appendChild(valor_extra_afinidad)
+        div_2.title = "valor_extra_afinidad"
+
         ///////////////////////////////////////////////////////////
-        const valor_extra_objetos = document.createElement("span")
-        valor_extra_objetos.classList.add("badge", "badge-success", "badge-pill")
-        valor_extra_objetos.innerText = 1
-        div_3.appendChild(valor_extra_objetos)
+        
+        const stack_personaje = document.createElement("span")
+        stack_personaje.classList.add("badge", "badge-success", "badge-pill")
+        stack_personaje.innerText = item.valores.stack_personaje
+        div_3.appendChild(stack_personaje)
+        div_3.title = "stack_personaje"
+
         ///////////////////////////////////////////////////////////
-        const valor_total = document.createElement("span")
-        valor_total.classList.add("badge", "badge-info", "badge-pill")
-        valor_total.innerText = 1
-        div_4.appendChild(valor_total)
-        div_4.title = "total"
+        // base
+        const valor_base = document.createElement("span")
+        valor_base.classList.add("badge", "badge-info", "badge-pill")
+        valor_base.innerText = item.valores.base
+        div_4.appendChild(valor_base)
+        div_4.title = "base"
         ///////////////////////////////////////////////////////////
         element.appendChild(div_1)
         element.appendChild(div_2)

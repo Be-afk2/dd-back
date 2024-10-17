@@ -55,4 +55,14 @@ export class DdWebController {
       return res.redirect('/loginView');
     })
   }
+
+  @Get('dev')
+  @Render("dev/dev")
+  async dev(@Request() req){
+
+    return {
+      breadcrumbName: "DD", breadcrumbPath: "no", layout: true,
+      token: req.session.user.token
+    }
+  }
 }

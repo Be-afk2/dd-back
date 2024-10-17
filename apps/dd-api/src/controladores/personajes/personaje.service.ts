@@ -129,7 +129,8 @@ export class PersonajeService {
                 valores: {
                     stack_personaje: stack_personaje_valor,
                     afinidad:afinidad_valor,
-                    total : stack_personaje_valor + afinidad_valor
+                    base : item.base,
+                    total : stack_personaje_valor + afinidad_valor + item.base
                 },
                 color: item.color,
                 colorLetra: item.colorLetra,
