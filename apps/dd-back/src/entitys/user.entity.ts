@@ -1,6 +1,7 @@
 
-import { Entity, Column, PrimaryGeneratedColumn,CreateDateColumn,UpdateDateColumn,DeleteDateColumn, Timestamp, Table, OneToMany} from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn,CreateDateColumn,UpdateDateColumn,DeleteDateColumn, Timestamp, Table, OneToMany, JoinColumn, OneToOne} from 'typeorm';
 import { BaseEntity } from 'typeorm/repository/BaseEntity';
+import { Inventario } from './inventario.entity';
 
 
 @Entity()
@@ -16,6 +17,9 @@ export class User extends BaseEntity {
     @Column({default:"*inserte descripcion*"})
     descripcion : string
 
+    @OneToOne(() => Inventario)
+    @JoinColumn()
+    Inventario: Inventario
 
     @DeleteDateColumn()
     deleted_at:Date;

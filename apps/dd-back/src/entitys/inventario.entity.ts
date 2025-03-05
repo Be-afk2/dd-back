@@ -8,11 +8,7 @@ export class Inventario extends BaseEntity {
     @PrimaryGeneratedColumn()
     id: number;
 
-    @Column()
-    id_objeto : number
-
-    @Column()
-    id_personaje : number
+s
     
     @DeleteDateColumn()
     deleted_at:Date;
