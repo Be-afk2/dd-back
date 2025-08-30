@@ -19,6 +19,7 @@ import { JwtStrategy } from 'apps/dd-api/src/controladores/auth/jwt.strategy';
 import { FotoRaza } from 'apps/dd-back/src/entitys/fotoraza.entity';
 import { PersonajeModule } from './personaje/personaje.module';
 import { StackBase } from 'apps/dd-back/src/entitys/stackBase.entity';
+import { Inventario } from 'apps/dd-back/src/entitys/inventario.entity';
 
 @Module({
   imports: [
@@ -37,14 +38,16 @@ import { StackBase } from 'apps/dd-back/src/entitys/stackBase.entity';
         Stack,
         Afinidad,
         FotoRaza,
-        StackBase
+        StackBase,
+        Inventario
       ],
     }),
     TypeOrmModule.forFeature([
       User,
       Personaje,
       Stack,
-      Afinidad
+      Afinidad,
+      Inventario,
     ]),
 
  
